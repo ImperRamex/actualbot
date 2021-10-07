@@ -6,7 +6,7 @@ import java.util.Hashtable;
 
 public class BotLogic {
 
-    public static void work() {
+    public BotLogic() {
         var stateContainer = new Hashtable<String, State>();
         var reader = new ConsoleMessageReader();
         var sender = new ConsoleMessageSender();

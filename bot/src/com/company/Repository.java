@@ -1,7 +1,6 @@
 package com.company;
 import com.company.api.IGetAnecdote;
 public class Repository {
-    int number;
     String defaultMessage1 = "Привет, я бот который знает 5 анекдотов, Введя число от 1 до 5 ты можешь его прочитать.";
     String defaultMessage2 = "Оцените по 10-ти балльной шкале.";
     String defaultMessage3 = "Давай попробуем еще раз.";
