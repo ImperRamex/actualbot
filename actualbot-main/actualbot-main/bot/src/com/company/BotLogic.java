@@ -1,28 +1,24 @@
 package com.company;
 
-import com.company.api.IMessageReader;
-import com.company.api.IMessageSender;
+import com.company.api.States;
 import com.company.api.State;
 
-import java.util.Hashtable;
-
 public class BotLogic {
-
-    public BotLogic(IMessageReader reader, IMessageSender sender) {
-        var stateContainer = new Hashtable<String, State>();
-        var handler = new MessageHandler(sender);
-
-        while (true) {
-            var message = reader.readMessage();
-            String userId = "console";
-            if(!stateContainer.containsKey(userId))
-            {
-                stateContainer.put(userId, new State());
-            }
-            var state = stateContainer.get(userId);
-            handler.handleMessage(message, state);
-
+    private String answer;
+    public String handleMessage(String message, State state) {
+        if (state.currentState == States.start) {
+            answer = MessagesFromBot.GetMessage(state.currentState);
+            state.currentState = States.anecdote;
+        } else if (state.currentState == States.anecdote) {
+            answer = Anecdotes.GetAnecdote(Integer.parseInt(message));
+            answer += "\n" + MessagesFromBot.GetMessage(state.currentState);
+            state.currentState = States.score;
+        }else if (state.currentState == States.score) {
+            answer = Answers.GetAnswer(Integer.parseInt(message));
+            answer += "\n" + MessagesFromBot.GetMessage(state.currentState);
+            state.currentState = States.start;
         }
+        return answer;
     }
 }
 

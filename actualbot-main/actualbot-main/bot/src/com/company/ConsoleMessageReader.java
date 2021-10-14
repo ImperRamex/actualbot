@@ -1,7 +1,6 @@
 package com.company;
 
 import com.company.api.IMessageReader;
-import com.company.api.State;
 
 import java.util.Scanner;
 

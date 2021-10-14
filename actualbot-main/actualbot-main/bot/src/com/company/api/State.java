@@ -1,12 +1,13 @@
 package com.company.api;
 
 public class State {
-    public State(int state) {
-        this.state = state;
-    }
-    public State() {
-        this(0);
+    public States currentState;
+
+    public State(States state) {
+        this.currentState = state;
     }
 
-    public int state;
+    public State() {
+        this(States.start);
+    }
 }
